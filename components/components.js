@@ -71,6 +71,7 @@ const COMPONENTS = {
   ],
   toasts: [
     { name: "Toast Notification", folder: "example-success", author: "Example" },
+    { name: "Interactive Action Toast", folder: "interactive-action", author: "Nestor" },
   ],
   tooltips: [
     { name: "Hover Tooltip", folder: "example-hover", author: "Example" },
