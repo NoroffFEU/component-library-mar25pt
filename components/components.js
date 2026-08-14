@@ -26,6 +26,10 @@ const COMPONENTS = {
     { name: "Breadcrumb Nav", folder: "example-nav", author: "Example" },
   ],
   buttons: [{ name: "Neon Button", folder: "example-neon", author: "Example" }],
+  buttons: [
+    { name: "Neon Button", folder: "example-neon", author: "Example" },
+    { name: "Pencil Button", folder: "adrian-de-souza", author: "Adrian de Souza" },
+  ],
   "buttons-groups": [
     {
       name: "Button Group",
