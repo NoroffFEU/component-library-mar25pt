@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pencil Button</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <button id="pencil-button">
+        <svg
+          width="240"
+          height="64"
+          viewBox="0 0 240 60"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <filter id="pencil" x="-5%" y="-5%" width="110%" height="110%">
+              <!-- Organic noise pattern -->
+              <feTurbulence
+                type="turbulence"
+                baseFrequency="0.04"
+                numOctaves="4"
+                result="noise"
+                seed="2"
+              />
+              <!-- Wobble the stroke using the noise -->
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="1.5"
+                xChannelSelector="R"
+                yChannelSelector="G"
+                result="displaced"
+              />
+              <!-- Slightly thicken unevenly -->
+              <feMorphology
+                in="displaced"
+                operator="dilate"
+                radius="0.3"
+                result="thick"
+              />
+              <!-- Layer thick + original for natural variation -->
+              <feMerge>
+                <feMergeNode in="thick" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <rect
+            id="pencil-border1"
+            x="1"
+            y="1"
+            width="238"
+            height="58"
+            rx="6"
+            fill="none"
+            stroke-width="0.8"
+            stroke-dasharray="298 3 197 2 295 2 194"
+            filter="url(#pencil)"
+          />
+          <rect
+            id="pencil-border2"
+            x="1"
+            y="1"
+            width="238"
+            height="58"
+            rx="6"
+            fill="none"
+            stroke-width="1"
+            stroke-dasharray="298 3 197 2 295 2 194"
+            filter="url(#pencil)"
+          />
+
+          <text
+            id="pencil-text"
+            x="120"
+            y="30"
+            text-anchor="middle"
+            dominant-baseline="central"
+            filter="url(#pencil)"
+          >
+            DO NOT PRESS
+          </text>
+        </svg>
+      </button>
+    </div>
+  </body>
+</html>
