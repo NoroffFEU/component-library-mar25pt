@@ -4,7 +4,7 @@
   --text-muted: #6b7280;
   --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.15);
-  --pills: #125A76;
+  --pills: #125a76;
 }
 
 * {
@@ -24,7 +24,6 @@ body {
 }
 
 .card {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,8 +32,10 @@ body {
   background-color: var(--card-bg);
   padding: 1rem;
   border-radius: 10px;
-  transform: translateY(0)  scale(1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   box-shadow: var(--shadow-soft);
 }
 
@@ -50,7 +51,7 @@ body {
   width: 160px;
   object-fit: cover;
   margin-bottom: 2rem;
-  border: 1px solid #a7a4a4 ;
+  border: 1px solid #a7a4a4;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
   box-shadow: var(--shadow-hover);
@@ -58,7 +59,7 @@ body {
 
 .avatar:hover {
   transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .name {
@@ -80,15 +81,13 @@ body {
 }
 
 ul {
-  list-style-type: none; /* Removes the dots */
-  padding: 0;            /* Removes default indentation */
-  margin: 0;  
-             /* Removes default spacing */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 .pills {
   display: flex;
   gap: 20px;
-
 }
 
 .pills li {
@@ -99,8 +98,6 @@ ul {
   color: #333;
   font-weight: 550;
 }
-
-
 
 .tag {
   background-color: var(--pills);
