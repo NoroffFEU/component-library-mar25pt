@@ -1,0 +1,108 @@
+:root {
+  --card-bg: #ffffff;
+  --page-bg: #eef1f6;
+  --text-muted: #6b7280;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.15);
+  --pills: #125A76;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: var(--page-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 350px;
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  transform: translateY(0)  scale(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.card:hover {
+  transform: translateY(-2px) scale(1.02);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: var(--shadow-hover);
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 160px;
+  width: 160px;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  border: 1px solid #a7a4a4 ;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: var(--shadow-hover);
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem;
+}
+
+.title {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+.bio {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: #333;
+}
+
+ul {
+  list-style-type: none; /* Removes the dots */
+  padding: 0;            /* Removes default indentation */
+  margin: 0;  
+             /* Removes default spacing */
+}
+.pills {
+  display: flex;
+  gap: 20px;
+
+}
+
+.pills li {
+  padding: 3px 0.5rem 3px 0.5rem;
+  border-radius: 999px;
+  background-color: rgba(18, 90, 118, 0.1);
+  border: rgba(18, 90, 118, 0.3) solid 2px;
+  color: #333;
+  font-weight: 550;
+}
+
+
+
+.tag {
+  background-color: var(--pills);
+  border-radius: 999px;
+}
