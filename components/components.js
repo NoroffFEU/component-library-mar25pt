@@ -29,6 +29,7 @@ const COMPONENTS = {
   ],
   buttons: [
     { name: "Neon Button", folder: "example-neon", author: "Example" },
+    { name: "Pencil Button", folder: "adrian-de-souza", author: "Adrian de Souza" },
   ],
   "buttons-groups": [
     { name: "Button Group", folder: "example-buttons-group", author: "Example" },
