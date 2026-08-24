@@ -18,9 +18,7 @@ const COMPONENTS = {
   accordions: [
     { name: "FAQ Accordion", folder: "example-faq", author: "Example" },
   ],
-  alerts: [
-    { name: "Alert Banner", folder: "example-info", author: "Example" },
-  ],
+  alerts: [{ name: "Alert Banner", folder: "example-info", author: "Example" }],
   badges: [
     { name: "Status Badge", folder: "example-status", author: "Example" },
   ],
@@ -29,10 +27,18 @@ const COMPONENTS = {
   ],
   buttons: [
     { name: "Neon Button", folder: "example-neon", author: "Example" },
-    { name: "Pencil Button", folder: "adrian-de-souza", author: "Adrian de Souza" },
+    {
+      name: "Pencil Button",
+      folder: "adrian-de-souza",
+      author: "Adrian de Souza",
+    },
   ],
   "buttons-groups": [
-    { name: "Button Group", folder: "example-buttons-group", author: "Example" },
+    {
+      name: "Button Group",
+      folder: "example-buttons-group",
+      author: "Example",
+    },
   ],
   cards: [
     { name: "Profile Card", folder: "example-profile", author: "Example" },
@@ -53,7 +59,11 @@ const COMPONENTS = {
     { name: "Top Navigation", folder: "example-top", author: "Example" },
   ],
   pagination: [
-    { name: "Numbered Pagination", folder: "example-numbered", author: "Example" },
+    {
+      name: "Numbered Pagination",
+      folder: "example-numbered",
+      author: "Example",
+    },
   ],
   "progress-bars": [
     { name: "Linear Progress", folder: "example-linear", author: "Example" },
@@ -71,10 +81,19 @@ const COMPONENTS = {
     { name: "Content Tabs", folder: "example-content", author: "Example" },
   ],
   toasts: [
-    { name: "Toast Notification", folder: "example-success", author: "Example" },
-    { name: "Interactive Action Toast", folder: "interactive-action", author: "Nestor" },
+    {
+      name: "Toast Notification",
+      folder: "example-success",
+      author: "Example",
+    },
+    {
+      name: "Interactive Action Toast",
+      folder: "interactive-action",
+      author: "Nestor",
+    },
   ],
   tooltips: [
     { name: "Hover Tooltip", folder: "example-hover", author: "Example" },
+    { name: "Hover Tooltip", folder: "celina", author: "Celina" },
   ],
 };
