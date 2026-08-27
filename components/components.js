@@ -69,6 +69,7 @@ const COMPONENTS = {
   ],
   tabs: [
     { name: "Content Tabs", folder: "example-content", author: "Example" },
+    { name: "Four Tabs", folder: "josejacobi", author: "Jose Jacobi" },
   ],
   toasts: [
     { name: "Toast Notification", folder: "example-success", author: "Example" },
