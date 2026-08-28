@@ -37,6 +37,11 @@ const COMPONENTS = {
       folder: "adrian-de-souza",
       author: "Adrian de Souza",
     },
+    {
+      name: "Hoover button",
+      folder: "buttons-michael",
+      author: "Michael Tanguy",
+    },
   ],
   "buttons-groups": [
     {
@@ -84,6 +89,7 @@ const COMPONENTS = {
   ],
   tabs: [
     { name: "Content Tabs", folder: "example-content", author: "Example" },
+    { name: "Four Tabs", folder: "josejacobi", author: "Jose Jacobi" },
   ],
   toasts: [
     {
