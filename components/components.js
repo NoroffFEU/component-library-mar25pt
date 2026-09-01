@@ -21,6 +21,11 @@ const COMPONENTS = {
   alerts: [{ name: "Alert Banner", folder: "example-info", author: "Example" }],
   badges: [
     { name: "Status Badge", folder: "example-status", author: "Example" },
+    {
+      name: "information-badge",
+      folder: "tooltips\celina",
+      author: "Michael Tanguy",
+    },
   ],
   breadcrumbs: [
     { name: "Breadcrumb Nav", folder: "example-nav", author: "Example" },
@@ -100,5 +105,6 @@ const COMPONENTS = {
   ],
   tooltips: [
     { name: "Hover Tooltip", folder: "example-hover", author: "Example" },
+    { name: "Hover Tooltip", folder: "celina", author: "Celina" },
   ],
 };

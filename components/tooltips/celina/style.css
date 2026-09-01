@@ -1,0 +1,185 @@
+/* Hover + focus tooltip — pure CSS, no JS.
+   Any focusable element with .tooltip-trigger and data-tooltip="..."
+   gets a dark label above it on hover and on keyboard focus. */
+
+.tooltip-trigger {
+  position: relative;
+}
+
+/* Both pseudo-elements share hidden state + transition */
+.tooltip-trigger::after,
+.tooltip-trigger::before {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* The label box */
+.tooltip-trigger::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 10px;
+  transform: translate(-50%, 4px) scale(0.96);
+  transform-origin: bottom center;
+
+  background: #1f2937;
+  color: #f9fafb;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  width: max-content;
+  max-width: 220px;
+  white-space: normal;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  z-index: 10;
+}
+
+/* Badge (pill)*/
+.badge-pill {
+  background: #ed3aa5;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 90px;
+  transform: translate(-50%, 4px) scale(0.96);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  z-index: 11;
+}
+
+.tooltip-trigger:hover .badge-pill,
+.tooltip-trigger:focus-visible .badge-pill {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-pill {
+    transition: opacity 0.15s ease;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* The little arrow pointing down at the trigger */
+
+.tooltip-trigger::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: -1px;
+  transform: translate(-50%, 4px);
+  border: 6px solid transparent;
+  border-top-color: #1f2937;
+  z-index: 10;
+}
+
+/* Show on hover AND on keyboard focus */
+.tooltip-trigger:hover::after,
+.tooltip-trigger:hover::before,
+.tooltip-trigger:focus-visible::after,
+.tooltip-trigger:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-trigger:hover::after,
+.tooltip-trigger:focus-visible::after {
+  transform: translate(-50%, 0) scale(1);
+}
+
+.tooltip-trigger:hover::before,
+.tooltip-trigger:focus-visible::before {
+  transform: translate(-50%, 0);
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .tooltip-trigger::after,
+  .tooltip-trigger::before {
+    transition: opacity 0.15s ease;
+    transform: translate(-50%, 0);
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 64px 24px; /* keeps triggers away from viewport edges */
+  box-sizing: border-box;
+  background: #f4f2f7;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  color: #1f2937;
+}
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.demo-btn {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.demo-btn:focus-visible {
+  outline: 3px solid #c4b5fd;
+  outline-offset: 2px;
+}
+
+.demo-link {
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+.demo-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: default;
+  margin-top: 90px;
+}
+.demo-badge:focus-visible {
+  outline: 3px solid #c4b5fd;
+  outline-offset: 2px;
+}
