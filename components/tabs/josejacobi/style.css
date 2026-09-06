@@ -22,7 +22,8 @@ body {
 .tabs {
   background: #fff;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: visible !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
@@ -30,6 +31,7 @@ body {
   display: flex;
   background: #f8f9fa;
   border-bottom: 2px solid #eee;
+  overflow: visible !important;
 }
 
 .tabs__button {
@@ -43,6 +45,9 @@ body {
   border-bottom: 3px solid transparent;
   cursor: pointer;
   transition: color 0.2s ease, border-color 0.2s ease;
+  overflow: visible !important;
+  position: relative;
+  z-index: 5;
 }
 
 .tabs__button:hover {
@@ -76,4 +81,57 @@ body {
   font-size: 0.9rem;
   color: #555;
   line-height: 1.6;
+}
+
+
+.tooltip-trigger {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+
+.tooltip-trigger::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #fff;
+  background: #1a1a2e;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tooltip-trigger::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1a1a2e;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.tooltip-trigger:hover::after,
+.tooltip-trigger:hover::before {
+  opacity: 1;
+  z-index: 9999 !important;
+}
+
+.tooltip-trigger:hover::after {
+  transform: translateX(-50%) scale(1);
 }
