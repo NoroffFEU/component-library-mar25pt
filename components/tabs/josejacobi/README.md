@@ -21,3 +21,10 @@ To add a new tab:
 - No keyboard arrow-key navigation between tabs
 - No URL hash support for deep-linking to a specific tab
 - No transition animation between panels
+
+## Added tooltip support (Jose Jacobi)
+
+- Added overflow to bounding elements to prevent tool-tip being cut-off from borders
+- Added z-index to make tool tip stand out over buttons
+- Removed blue colors from original tool tip because it was conclicting with colors from tab component
+
