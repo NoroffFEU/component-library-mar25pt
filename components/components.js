@@ -53,6 +53,7 @@ const COMPONENTS = {
   ],
   drawers: [
     { name: "Sidebar Drawer", folder: "example-sidebar", author: "Example" },
+    { name: "Sidebar Drawer with CTA Button", folder: "josejacobi", author: "Jose Jacobi" },
   ],
   dropdowns: [
     { name: "Menu Dropdown", folder: "example-menu", author: "Example" },
