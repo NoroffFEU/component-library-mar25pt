@@ -1,0 +1,896 @@
+/* =========================================
+   GENERAL SETTINGS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #090909;
+    color: white;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 6%;
+
+    background: rgba(0, 0, 0, 0.82);
+
+    backdrop-filter: blur(10px);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #ff3cac;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff3cac;
+}
+
+.menu-btn {
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: white;
+
+    font-size: 26px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   HERO / POSTER
+========================================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff0080,
+            #7928ca,
+            #00c6ff
+        );
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    filter: blur(100px);
+
+    animation: floating 8s infinite alternate;
+}
+
+@keyframes floating {
+
+    from {
+        transform: translate(-150px, -100px);
+    }
+
+    to {
+        transform: translate(150px, 100px);
+    }
+
+}
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent,
+            rgba(0, 0, 0, 0.65)
+        );
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    padding: 30px;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(80px, 15vw, 190px);
+
+    line-height: 0.8;
+
+    font-weight: 800;
+
+    letter-spacing: -8px;
+}
+
+.hero h1 span {
+    color: transparent;
+
+    -webkit-text-stroke: 3px white;
+}
+
+.hero-info {
+    margin: 35px 0;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn,
+.buy-btn {
+    display: inline-block;
+
+    padding: 16px 35px;
+
+    border: none;
+
+    background: white;
+
+    color: black;
+
+    font-family: inherit;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn:hover,
+.buy-btn:hover {
+    transform: translateY(-4px);
+
+    background: #ff3cac;
+
+    color: white;
+}
+
+
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
+
+.section {
+    padding: 120px 8%;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 60px;
+}
+
+.section-title p {
+    color: #ff3cac;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+}
+
+.section-title h2 {
+    margin-top: 10px;
+
+    font-size: clamp(35px, 5vw, 65px);
+
+    font-weight: 800;
+}
+
+.title-line {
+    width: 70px;
+    height: 4px;
+
+    background: #ff3cac;
+
+    margin: 20px auto;
+}
+
+
+/* =========================================
+   SCHEDULE
+========================================= */
+
+.schedule {
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.artist-card {
+    display: grid;
+
+    grid-template-columns: 150px 1fr auto;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 30px;
+
+    border-bottom: 1px solid #333;
+
+    transition: 0.3s;
+}
+
+.artist-card:hover {
+    background: #151515;
+
+    transform: translateX(8px);
+}
+
+.artist-time span {
+    display: block;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+.artist-time small {
+    color: #888;
+
+    font-size: 11px;
+}
+
+.artist-info h3 {
+    font-size: 24px;
+}
+
+.artist-info p {
+    color: #888;
+
+    margin-top: 5px;
+}
+
+.artist-tag {
+    padding: 7px 14px;
+
+    border: 1px solid #555;
+
+    border-radius: 30px;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   TICKETS
+========================================= */
+
+.tickets-section {
+    padding: 120px 8%;
+
+    background: #111;
+}
+
+.ticket-container {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.ticket-card {
+    position: relative;
+
+    padding: 40px;
+
+    background: #1b1b1b;
+
+    border: 1px solid #333;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    min-height: 350px;
+
+    transition: 0.3s;
+}
+
+.ticket-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #ff3cac;
+}
+
+.ticket-card.featured {
+    border: 2px solid #ff3cac;
+}
+
+.recommended {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    background: #ff3cac;
+
+    padding: 5px 10px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.ticket-type {
+    color: #ff3cac;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+.ticket-card h3 {
+    margin: 15px 0;
+
+    font-size: 24px;
+}
+
+.ticket-card p {
+    color: #999;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.price {
+    display: block;
+
+    margin-top: 25px;
+
+    font-size: 38px;
+}
+
+.ticket-btn {
+    margin-top: 30px;
+
+    padding: 13px;
+
+    background: transparent;
+
+    border: 1px solid white;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.ticket-btn:hover,
+.ticket-btn.active {
+    background: white;
+
+    color: black;
+}
+
+
+/* =========================================
+   PURCHASE SUMMARY
+========================================= */
+
+.purchase-box {
+    max-width: 600px;
+
+    margin: 60px auto 0;
+
+    padding: 35px;
+
+    background: #090909;
+
+    text-align: center;
+
+    border: 1px solid #333;
+}
+
+.purchase-box h3 {
+    margin-bottom: 15px;
+}
+
+#selectedTicket {
+    color: #ff3cac;
+}
+
+.quantity {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin: 25px 0;
+}
+
+.quantity button {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.quantity span {
+    min-width: 25px;
+
+    font-size: 20px;
+}
+
+.total {
+    font-size: 18px;
+
+    margin-bottom: 25px;
+}
+
+.total strong {
+    font-size: 28px;
+
+    color: #ff3cac;
+}
+
+
+/* =========================================
+   SPONSORS MARQUEE
+========================================= */
+
+.sponsors-section {
+    padding: 70px 0;
+
+    overflow: hidden;
+
+    background: #ff3cac;
+
+    color: black;
+}
+
+.sponsors-section > p {
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 30px;
+}
+
+.marquee {
+    overflow: hidden;
+
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-flex;
+
+    gap: 80px;
+
+    animation: marquee 25s linear infinite;
+}
+
+.marquee-content span {
+    font-size: 35px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+@keyframes marquee {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq-section {
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+.faq-container {
+    max-width: 800px;
+
+    margin: auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #333;
+}
+
+.faq-question {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 25px 0;
+
+    background: none;
+
+    border: none;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.faq-question strong {
+    flex-shrink: 0;
+
+    font-size: 25px;
+
+    font-weight: 400;
+
+    transition: 0.3s;
+}
+
+.faq-answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height 0.4s ease;
+}
+
+.faq-answer p {
+    padding-bottom: 25px;
+
+    color: #999;
+
+    line-height: 1.8;
+}
+
+.faq-item.active .faq-question strong {
+    transform: rotate(45deg);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 50px 8%;
+
+    text-align: center;
+
+    background: #050505;
+}
+
+footer p {
+    margin-top: 10px;
+
+    color: #777;
+}
+
+footer .copyright {
+    font-size: 12px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================
+   PURCHASE MODAL
+========================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    z-index: 2000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+
+    width: 90%;
+
+    max-width: 450px;
+
+    padding: 50px;
+
+    text-align: center;
+
+    background: #171717;
+
+    border: 1px solid #ff3cac;
+}
+
+.modal-content h2 {
+    font-size: 40px;
+
+    color: #ff3cac;
+
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #aaa;
+
+    margin-bottom: 30px;
+
+    line-height: 1.7;
+}
+
+.close-modal {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+
+    background: none;
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+
+    .ticket-container {
+        grid-template-columns: 1fr;
+    }
+
+    .ticket-card {
+        min-height: 320px;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    nav {
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background: #090909;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        padding: 18px 30px;
+
+        border-bottom: 1px solid #222;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .artist-card {
+        grid-template-columns: 90px 1fr;
+    }
+
+    .artist-tag {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .section,
+    .tickets-section {
+        padding: 80px 5%;
+    }
+
+    .hero-subtitle {
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+    .hero h1 {
+        font-size: 75px;
+
+        letter-spacing: -4px;
+    }
+
+    .hero h1 span {
+        -webkit-text-stroke: 2px white;
+    }
+
+    .hero-info {
+        font-size: 14px;
+    }
+
+    .artist-card {
+        padding: 20px 10px;
+
+        gap: 15px;
+    }
+
+    .artist-time span {
+        font-size: 20px;
+    }
+
+    .artist-info h3 {
+        font-size: 17px;
+    }
+
+    .ticket-card {
+        padding: 30px;
+    }
+
+    .purchase-box {
+        padding: 25px 15px;
+    }
+
+    .modal-content {
+        padding: 40px 25px;
+    }
+
+}
