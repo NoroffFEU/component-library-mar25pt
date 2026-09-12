@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+/* =====================================================
+   GLOBAL / RESET
+   ===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #fbf4ee;
+  --surface: #ffffff;
+  --ink: #1c0f0a;
+  --muted: #7a5f52;
+  --line: #e7d8cc;
+  --orange: #c2500f;
+  --teal: #0f7a5c;
+  --card: #fff9f4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #160a12;
+    --surface: #20111a;
+    --ink: #f5ece6;
+    --muted: #a4897f;
+    --line: #3a2230;
+    --orange: #ff7a33;
+    --teal: #3fe0ae;
+    --card: #1c0e17;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #160a12;
+  --surface: #20111a;
+  --ink: #f5ece6;
+  --muted: #a4897f;
+  --line: #3a2230;
+  --orange: #ff7a33;
+  --teal: #3fe0ae;
+  --card: #1c0e17;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  background: var(--bg);
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a {
+  color: inherit;
+}
+img {
+  max-width: 100%;
+}
+.wrap {
+  width: 100%;
+  padding-inline: clamp(20px, 6vw, 72px);
+}
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.display {
+  font-family: "Anton", Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px clamp(20px, 6vw, 72px);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .brand {
+  font-family: "Anton";
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.topbar nav {
+  display: flex;
+  gap: clamp(14px, 3vw, 32px);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.topbar nav a {
+  text-decoration: none;
+  opacity: 0.8;
+}
+.topbar nav a:hover {
+  opacity: 1;
+  color: var(--orange);
+}
+.topbar .cta {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  padding: 9px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.topbar .cta:hover {
+  background: var(--orange);
+  color: var(--bg);
+}
+@media (max-width: 640px) {
+  .topbar nav {
+    display: none;
+  }
+}
