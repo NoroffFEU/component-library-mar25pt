@@ -1,4 +1,23 @@
-
 /* =====================================================
      SECTION 03 — INFO & TICKETS
      ===================================================== */
+.info {
+  padding: 88px 0 60px;
+}
+
+.info-head {
+  margin-bottom: 44px;
+}
+
+.info-head h2 {
+  font-family: "Anton";
+  font-size: clamp(34px, 5vw, 58px);
+  text-transform: uppercase;
+}
+
+.info-head p {
+  max-width: 44ch;
+  color: var(--muted);
+  font-size: 15px;
+  margin-top: 10px;
+}
