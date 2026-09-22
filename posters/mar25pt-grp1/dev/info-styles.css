@@ -102,6 +102,14 @@
     0 0 0 1px var(--orange),
     0 0 28px 4px color-mix(in srgb, var(--orange) 55%, transparent);
 }
+
+.ticket-tier.is-popular:hover {
+  border-color: var(--teal);
+  box-shadow:
+    0 0 0 1px var(--orange),
+    0 0 36px 6px color-mix(in srgb, var(--orange) 70%, transparent);
+}
+
 .ticket-tier .tier-badge {
   position: absolute;
   top: -12px;
