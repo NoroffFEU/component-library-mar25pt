@@ -86,7 +86,16 @@
   flex-direction: column;
   gap: 18px;
   position: relative;
+  transition:
+    border-color 0.18s,
+    transform 0.18s,
+    box-shadow 0.18s;
 }
+.ticket-tier:hover {
+  border-color: var(--orange);
+  transform: translateY(-6px);
+}
+
 .ticket-tier.is-popular {
   border-color: var(--orange);
   box-shadow:
