@@ -5,75 +5,46 @@
 .hero {
   position: relative;
 
+  width: 100%;
   height: calc(100vh - 65px);
-  min-height: 620px;
-
-  /*
-    This padding creates the space around the photograph,
-    making it feel like a framed poster.
-  */
-  padding: clamp(14px, 2vw, 28px);
 
   overflow: hidden;
-
-  background: var(--bg);
   color: white;
+
+  background-image: url("images/concert.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  flex-shrink: 0;
 }
 
 
-/* ---------- POSTER IMAGE ---------- */
-
-.hero-bg {
-  position: absolute;
-
-  /*
-    Instead of touching the edges, the photograph
-    sits inside the section like a poster.
-  */
-  inset: clamp(14px, 2vw, 28px);
-
-  width: calc(100% - clamp(28px, 4vw, 56px));
-  height: calc(100% - clamp(28px, 4vw, 56px));
-
-  object-fit: cover;
-  object-position: center 55%;
-
-  z-index: 0;
-
-}
-
-/* ---------- INNER POSTER FRAME ---------- */
+/* =====================================================
+   INNER POSTER FRAME
+   ===================================================== */
 
 .hero::after {
   content: "";
 
   position: absolute;
-
-  /*
-    Slightly farther inside than the photograph itself.
-  */
-  inset: clamp(23px, 2.7vw, 38px);
+  inset: 10px;
 
   border: 1px solid rgba(255, 122, 51, 0.75);
 
   z-index: 2;
 
-  /*
-    Important: the decorative border should never
-    interfere with links or buttons.
-  */
   pointer-events: none;
 }
 
-/* Slight dark overlay.
 
-   The image remains clearly visible, but white text
-   becomes easier to read.
-*/
+/* =====================================================
+   DARK OVERLAY
+   ===================================================== */
+
 .hero-shade {
   position: absolute;
-
-  inset: clamp(14px, 2vw, 28px);
+  inset: 0;
 
   z-index: 1;
 
@@ -131,8 +102,8 @@
   position: absolute;
 
   /*
-    Positioning it slightly above the middle keeps
-    the bright stage visible.
+    The title sits over the concert photo without
+    covering the main stage too much.
   */
   top: 26%;
   left: 50%;
@@ -148,7 +119,7 @@
 }
 
 
-/* STØY */
+/* ---------- STØY ---------- */
 
 .stoy {
   position: absolute;
@@ -160,7 +131,6 @@
   font-size: clamp(72px, 11vw, 165px);
 
   line-height: 1;
-
   letter-spacing: 0.01em;
 
   color: white;
@@ -170,11 +140,15 @@
   text-shadow:
     0 5px 20px rgba(0, 0, 0, 0.4);
 
+  /*
+    Only the text moves.
+    The photograph remains completely static.
+  */
   animation: floatStoy 5s ease-in-out infinite;
 }
 
 
-/* / 26 */
+/* ---------- / 26 ---------- */
 
 .year {
   position: absolute;
@@ -282,13 +256,12 @@
 
 
 /* =====================================================
-   ANIMATIONS
+   TEXT ANIMATIONS
    ===================================================== */
 
 /*
-  The letters move only a few pixels.
-  It should feel like a floating poster, not like
-  an aggressive animation.
+  Only the typography moves.
+  The background photograph has no animation.
 */
 
 @keyframes floatStoy {
@@ -334,17 +307,19 @@
 @media (max-width: 700px) {
 
   .hero {
-    height: calc(100svh - 60px);
-    min-height: 650px;
+    height: calc(100svh - 65px);
   }
 
 
-  .hero-bg {
-    /*
-      Keeps the stage around the middle when the
-      wide image is cropped for a phone.
-    */
-    object-position: center center;
+  .hero-info {
+    top: 20px;
+
+    font-size: 9px;
+  }
+
+
+  .hero-info-left {
+    left: 20px;
   }
 
 
@@ -354,58 +329,85 @@
 
 
   .floating-title {
-    top: 27%;
+    top: 22%;
 
     width: 92vw;
-    height: 220px;
+    height: 55%;
   }
 
 
   .stoy {
     left: 4%;
+    top: 10%;
 
-    font-size: clamp(75px, 25vw, 130px);
+    font-size: clamp(55px, 20vw, 110px);
   }
 
 
   .year {
     right: 5%;
+    bottom: 10%;
 
-    font-size: clamp(55px, 17vw, 90px);
+    font-size: clamp(40px, 13vw, 75px);
+  }
+
+
+  .hero-bottom {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
   }
 
 
   .hero-bottom p {
-    font-size: 13px;
-  }
-
-}
-
-
-/* Smaller phones */
-
-@media (max-width: 450px) {
-
-  .hero-bottom {
-    bottom: 25px;
-
-    align-items: flex-end;
+    font-size: 11px;
   }
 
 
   .hero-explore {
     padding: 8px 12px;
-  }
 
-
-  .hero-bottom p {
-    max-width: 190px;
+    font-size: 9px;
   }
 
 }
 
 
-/* Respect accessibility settings */
+/* =====================================================
+   SMALLER PHONES
+   ===================================================== */
+
+@media (max-width: 450px) {
+
+  .hero-bottom {
+    align-items: flex-end;
+
+    gap: 15px;
+  }
+
+
+  .hero-bottom p {
+    max-width: 170px;
+
+    font-size: 10px;
+  }
+
+
+  .hero-explore {
+    padding: 7px 10px;
+  }
+
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+   ===================================================== */
+
+/*
+  If the user has reduced-motion enabled,
+  disable the floating text animations.
+*/
 
 @media (prefers-reduced-motion: reduce) {
 
