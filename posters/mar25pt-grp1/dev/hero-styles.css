@@ -95,7 +95,7 @@
 
 
 /* =====================================================
-   FLOATING TITLE
+   HERO TITLE
    ===================================================== */
 
 .floating-title {
@@ -111,7 +111,10 @@
   transform: translateX(-50%);
 
   width: min(900px, 88vw);
-  height: 250px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 15px 8% 0;
 
   z-index: 3;
 
@@ -122,11 +125,6 @@
 /* ---------- STØY ---------- */
 
 .stoy {
-  position: absolute;
-
-  left: 8%;
-  top: 15px;
-
   font-family: "Anton", Impact, sans-serif;
   font-size: clamp(72px, 11vw, 165px);
 
@@ -135,27 +133,15 @@
 
   color: white;
 
-  transform: rotate(-5deg);
-
   text-shadow:
     0 5px 20px rgba(0, 0, 0, 0.4);
 
-  /*
-    Only the text moves.
-    The photograph remains completely static.
-  */
-  animation: floatStoy 5s ease-in-out infinite;
 }
 
 
 /* ---------- / 26 ---------- */
 
 .year {
-  position: absolute;
-
-  right: 8%;
-  bottom: 10px;
-
   font-family: "Anton", Impact, sans-serif;
   font-size: clamp(48px, 7vw, 105px);
 
@@ -163,12 +149,9 @@
 
   color: var(--orange);
 
-  transform: rotate(7deg);
-
   text-shadow:
     0 5px 18px rgba(0, 0, 0, 0.45);
 
-  animation: floatYear 6s ease-in-out infinite;
 }
 
 
@@ -256,51 +239,6 @@
 
 
 /* =====================================================
-   TEXT ANIMATIONS
-   ===================================================== */
-
-/*
-  Only the typography moves.
-  The background photograph has no animation.
-*/
-
-@keyframes floatStoy {
-
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(-5deg);
-  }
-
-  50% {
-    transform:
-      translateY(-10px)
-      rotate(-3deg);
-  }
-
-}
-
-
-@keyframes floatYear {
-
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(7deg);
-  }
-
-  50% {
-    transform:
-      translateY(8px)
-      rotate(5deg);
-  }
-
-}
-
-
-/* =====================================================
    MOBILE
    ===================================================== */
 
@@ -332,22 +270,16 @@
     top: 22%;
 
     width: 92vw;
-    height: 55%;
+    padding: 0 5% 0 4%;
   }
 
 
   .stoy {
-    left: 4%;
-    top: 10%;
-
     font-size: clamp(55px, 20vw, 110px);
   }
 
 
   .year {
-    right: 5%;
-    bottom: 10%;
-
     font-size: clamp(40px, 13vw, 75px);
   }
 
@@ -395,25 +327,6 @@
 
   .hero-explore {
     padding: 7px 10px;
-  }
-
-}
-
-
-/* =====================================================
-   ACCESSIBILITY
-   ===================================================== */
-
-/*
-  If the user has reduced-motion enabled,
-  disable the floating text animations.
-*/
-
-@media (prefers-reduced-motion: reduce) {
-
-  .stoy,
-  .year {
-    animation: none;
   }
 
 }
