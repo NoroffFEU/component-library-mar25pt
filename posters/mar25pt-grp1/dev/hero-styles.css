@@ -101,30 +101,56 @@
 .floating-title {
   position: absolute;
 
-  /*
-    The title sits over the concert photo without
-    covering the main stage too much.
-  */
-  top: 26%;
+  top: 50%;
   left: 50%;
 
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%) rotate(-35deg);
 
   width: min(900px, 88vw);
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  padding: 15px 8% 0;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 24px);
 
   z-index: 3;
 
   pointer-events: none;
 }
 
+.stoy,
+.year {
+  flex-shrink: 0;
+  animation: titleEntrance 3.6s ease-in-out both;
+}
+
+/* Moving along the rotated frame keeps the text and trajectory aligned. */
+@keyframes titleEntrance {
+  0% {
+    transform: translateX(calc(var(--entry-direction) * 120vmax));
+  }
+  40%, 64%, 81%, 93%, 100% {
+    transform: translateX(0);
+  }
+  52% {
+    transform: translateX(calc(var(--entry-direction) * 36px));
+  }
+  73% {
+    transform: translateX(calc(var(--entry-direction) * 18px));
+  }
+  87% {
+    transform: translateX(calc(var(--entry-direction) * 8px));
+  }
+  97% {
+    transform: translateX(calc(var(--entry-direction) * 3px));
+  }
+}
+
 
 /* ---------- STØY ---------- */
 
 .stoy {
+  --entry-direction: -1;
+
   font-family: "Anton", Impact, sans-serif;
   font-size: clamp(72px, 11vw, 165px);
 
@@ -142,8 +168,10 @@
 /* ---------- / 26 ---------- */
 
 .year {
+  --entry-direction: 1;
+
   font-family: "Anton", Impact, sans-serif;
-  font-size: clamp(48px, 7vw, 105px);
+  font-size: clamp(72px, 11vw, 165px);
 
   line-height: 1;
 
@@ -267,10 +295,7 @@
 
 
   .floating-title {
-    top: 22%;
-
     width: 92vw;
-    padding: 0 5% 0 4%;
   }
 
 
@@ -280,7 +305,7 @@
 
 
   .year {
-    font-size: clamp(40px, 13vw, 75px);
+    font-size: clamp(55px, 20vw, 110px);
   }
 
 
@@ -302,6 +327,13 @@
     font-size: 9px;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stoy,
+  .year {
+    animation: none;
+  }
 }
 
 
