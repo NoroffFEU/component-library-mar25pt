@@ -95,37 +95,99 @@
 
 
 /* =====================================================
-   FLOATING TITLE
+   HERO TITLE
    ===================================================== */
 
 .floating-title {
   position: absolute;
 
-  /*
-    The title sits over the concert photo without
-    covering the main stage too much.
-  */
-  top: 26%;
+  top: 50%;
   left: 50%;
 
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%) rotate(-35deg);
 
   width: min(900px, 88vw);
-  height: 250px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 24px);
 
   z-index: 3;
 
   pointer-events: none;
 }
 
+.stoy,
+.year {
+  flex-shrink: 0;
+  animation:
+    titleEntrance 3.6s ease-in-out both,
+    electricTrail 3.6s linear both;
+}
+
+/* Shadows trail behind each word along the same rotated diagonal. */
+@keyframes electricTrail {
+  0%, 46%, 100% {
+    text-shadow: var(--rest-shadow);
+  }
+  8%, 24% {
+    text-shadow:
+      0 0 2px white,
+      0 0 10px #ff795e,
+      calc(var(--entry-direction) * 0.06em) -2px 1px #ffe4dc,
+      calc(var(--entry-direction) * 0.14em) 2px 3px #ff3b24,
+      calc(var(--entry-direction) * 0.3em) -3px 5px rgba(255, 59, 36, 0.8),
+      calc(var(--entry-direction) * 0.5em) 3px 8px rgba(220, 25, 55, 0.6),
+      calc(var(--entry-direction) * 0.8em) -2px 14px rgba(255, 59, 36, 0.35),
+      calc(var(--entry-direction) * 1.1em) 2px 22px rgba(220, 25, 55, 0.15);
+  }
+  16%, 32% {
+    text-shadow:
+      0 0 3px white,
+      0 0 14px #ff3b24,
+      calc(var(--entry-direction) * 0.04em) 2px 1px #ffe4dc,
+      calc(var(--entry-direction) * 0.1em) -2px 2px #ff7043,
+      calc(var(--entry-direction) * 0.23em) 3px 4px rgba(255, 59, 36, 0.85),
+      calc(var(--entry-direction) * 0.4em) -3px 7px rgba(220, 25, 55, 0.65),
+      calc(var(--entry-direction) * 0.65em) 2px 12px rgba(255, 59, 36, 0.4),
+      calc(var(--entry-direction) * 0.9em) -2px 18px rgba(220, 25, 55, 0.2);
+  }
+  40% {
+    text-shadow:
+      0 0 3px white,
+      0 0 12px #ff795e,
+      0 0 24px rgba(220, 25, 55, 0.55);
+  }
+}
+
+/* Moving along the rotated frame keeps the text and trajectory aligned. */
+@keyframes titleEntrance {
+  0% {
+    transform: translateX(calc(var(--entry-direction) * 120vmax));
+  }
+  40%, 64%, 81%, 93%, 100% {
+    transform: translateX(0);
+  }
+  52% {
+    transform: translateX(calc(var(--entry-direction) * 36px));
+  }
+  73% {
+    transform: translateX(calc(var(--entry-direction) * 18px));
+  }
+  87% {
+    transform: translateX(calc(var(--entry-direction) * 8px));
+  }
+  97% {
+    transform: translateX(calc(var(--entry-direction) * 3px));
+  }
+}
+
 
 /* ---------- STØY ---------- */
 
 .stoy {
-  position: absolute;
-
-  left: 8%;
-  top: 15px;
+  --entry-direction: -1;
+  --rest-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 
   font-family: "Anton", Impact, sans-serif;
   font-size: clamp(72px, 11vw, 165px);
@@ -135,40 +197,26 @@
 
   color: white;
 
-  transform: rotate(-5deg);
+  text-shadow: var(--rest-shadow);
 
-  text-shadow:
-    0 5px 20px rgba(0, 0, 0, 0.4);
-
-  /*
-    Only the text moves.
-    The photograph remains completely static.
-  */
-  animation: floatStoy 5s ease-in-out infinite;
 }
 
 
 /* ---------- / 26 ---------- */
 
 .year {
-  position: absolute;
-
-  right: 8%;
-  bottom: 10px;
+  --entry-direction: 1;
+  --rest-shadow: 0 5px 18px rgba(0, 0, 0, 0.45);
 
   font-family: "Anton", Impact, sans-serif;
-  font-size: clamp(48px, 7vw, 105px);
+  font-size: clamp(72px, 11vw, 165px);
 
   line-height: 1;
 
   color: var(--orange);
 
-  transform: rotate(7deg);
+  text-shadow: var(--rest-shadow);
 
-  text-shadow:
-    0 5px 18px rgba(0, 0, 0, 0.45);
-
-  animation: floatYear 6s ease-in-out infinite;
 }
 
 
@@ -256,51 +304,6 @@
 
 
 /* =====================================================
-   TEXT ANIMATIONS
-   ===================================================== */
-
-/*
-  Only the typography moves.
-  The background photograph has no animation.
-*/
-
-@keyframes floatStoy {
-
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(-5deg);
-  }
-
-  50% {
-    transform:
-      translateY(-10px)
-      rotate(-3deg);
-  }
-
-}
-
-
-@keyframes floatYear {
-
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(7deg);
-  }
-
-  50% {
-    transform:
-      translateY(8px)
-      rotate(5deg);
-  }
-
-}
-
-
-/* =====================================================
    MOBILE
    ===================================================== */
 
@@ -329,26 +332,17 @@
 
 
   .floating-title {
-    top: 22%;
-
     width: 92vw;
-    height: 55%;
   }
 
 
   .stoy {
-    left: 4%;
-    top: 10%;
-
     font-size: clamp(55px, 20vw, 110px);
   }
 
 
   .year {
-    right: 5%;
-    bottom: 10%;
-
-    font-size: clamp(40px, 13vw, 75px);
+    font-size: clamp(55px, 20vw, 110px);
   }
 
 
@@ -370,6 +364,13 @@
     font-size: 9px;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stoy,
+  .year {
+    animation: none;
+  }
 }
 
 
@@ -395,25 +396,6 @@
 
   .hero-explore {
     padding: 7px 10px;
-  }
-
-}
-
-
-/* =====================================================
-   ACCESSIBILITY
-   ===================================================== */
-
-/*
-  If the user has reduced-motion enabled,
-  disable the floating text animations.
-*/
-
-@media (prefers-reduced-motion: reduce) {
-
-  .stoy,
-  .year {
-    animation: none;
   }
 
 }
