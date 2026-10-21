@@ -3,7 +3,17 @@
    ===================================================== */
 
 .hero {
+  --title-animation-duration: 3.6s;
+  --spotlight-size: clamp(84px, 15.75vw, 210px);
+  --spotlight-y: 10px;
+  --info-inset: clamp(20px, 6vw, 72px);
+  --info-left-width: 107.8px;
+  --info-right-width: 130.9px;
+  --spotlight-left: calc(var(--info-inset) + var(--info-left-width) / 2);
+  --spotlight-right: calc(100% - var(--info-inset) - var(--info-right-width) / 2);
+
   position: relative;
+  isolation: isolate;
 
   width: 100%;
   height: calc(100vh - 65px);
@@ -17,6 +27,105 @@
   background-repeat: no-repeat;
   
   flex-shrink: 0;
+}
+
+
+/* =====================================================
+   MOVING SPOTLIGHT
+   ===================================================== */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  left: var(--spotlight-left);
+  top: var(--spotlight-y);
+  width: var(--spotlight-size);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 245, 220, 0.7) 0%,
+    rgba(255, 230, 185, 0.6) 45%,
+    rgba(255, 205, 145, 0.45) 55%,
+    rgba(255, 190, 130, 0.12) 63%,
+    transparent 68%
+  );
+
+  mix-blend-mode: screen;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  /* Fade in after the title and pause at both ends of a horizontal path. */
+  animation:
+    spotlightFade 1.2s ease-out var(--title-animation-duration) forwards,
+    spotlightSweep 12s ease-in-out var(--title-animation-duration) infinite alternate;
+}
+
+.hero-beam {
+  position: absolute;
+  top: var(--spotlight-y);
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--spotlight-y));
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  filter: blur(5px);
+  animation:
+    spotlightFade 1.2s ease-out var(--title-animation-duration) forwards;
+}
+
+.hero-beam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 245, 220, 0.65),
+    rgba(255, 225, 175, 0.32) 75%,
+    rgba(255, 215, 155, 0.16)
+  );
+  animation: beamSweep 12s ease-in-out var(--title-animation-duration) infinite alternate both;
+}
+
+.hero-beam::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff5dc;
+  box-shadow: 0 0 16px 5px rgba(255, 225, 175, 0.65);
+}
+
+/* The source stays fixed; the base follows the spotlight's center. */
+@keyframes beamSweep {
+  0%, 12% {
+    clip-path: polygon(50% 100%, calc(var(--spotlight-left) - var(--spotlight-size) * 0.42) 0, calc(var(--spotlight-left) + var(--spotlight-size) * 0.42) 0);
+  }
+  88%, 100% {
+    clip-path: polygon(50% 100%, calc(var(--spotlight-right) - var(--spotlight-size) * 0.42) 0, calc(var(--spotlight-right) + var(--spotlight-size) * 0.42) 0);
+  }
+}
+
+@keyframes spotlightFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spotlightSweep {
+  0%, 12% {
+    left: var(--spotlight-left);
+  }
+  88%, 100% {
+    left: var(--spotlight-right);
+  }
 }
 
 
@@ -83,12 +192,14 @@
 
 
 .hero-info-left {
-  left: clamp(20px, 6vw, 72px);
+  left: var(--info-inset);
+  width: var(--info-left-width);
 }
 
 
 .hero-info-right {
-  right: clamp(20px, 6vw, 72px);
+  width: var(--info-right-width);
+  right: var(--info-inset);
 
   text-align: right;
 }
@@ -121,8 +232,8 @@
 .year {
   flex-shrink: 0;
   animation:
-    titleEntrance 3.6s ease-in-out both,
-    electricTrail 3.6s linear both;
+    titleEntrance var(--title-animation-duration) ease-in-out both,
+    electricTrail var(--title-animation-duration) linear both;
 }
 
 /* Shadows trail behind each word along the same rotated diagonal. */
@@ -310,6 +421,9 @@
 @media (max-width: 700px) {
 
   .hero {
+    --info-inset: 20px;
+    --info-left-width: 88.2px;
+    --info-right-width: 107.1px;
     height: calc(100svh - 65px);
   }
 
@@ -323,11 +437,6 @@
 
   .hero-info-left {
     left: 20px;
-  }
-
-
-  .hero-info-right {
-    display: none;
   }
 
 
@@ -366,12 +475,6 @@
 
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .stoy,
-  .year {
-    animation: none;
-  }
-}
 
 
 /* =====================================================
