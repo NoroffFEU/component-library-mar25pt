@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover + Focus Tooltip</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <h1>Hover + Focus Tooltip</h1>
+      <p>Hover with the mouse, or press Tab to focus each element.</p>
+    </div>
+
+    <!-- Trigger 1: button -->
+    <button class="demo-btn tooltip-trigger" data-tooltip="Have a nice day!">
+      Hover over me
+    </button>
+
+    <!-- Trigger 2: link -->
+    <a
+      href="#"
+      class="demo-link tooltip-trigger"
+      data-tooltip="Links work as triggers too"
+    >
+      A link with a tooltip
+    </a>
+
+    <!-- Trigger 3: non-interactive element made focusable with tabindex -->
+    <span
+      class="demo-badge tooltip-trigger"
+      tabindex="0"
+      data-tooltip="This label wraps onto multiple lines when the text is long enough to need it"
+      ><span class="badge-pill">Information</span>
+      Hover or focus me
+    </span>
+  </body>
+</html>
