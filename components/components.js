@@ -60,6 +60,11 @@ const COMPONENTS = {
   ],
   modals: [
     { name: "Confirm Dialog", folder: "example-confirm", author: "Example" },
+    {
+      name: "Modal with tabs",
+      folder: "celina",
+      author: "Celina",
+    },
   ],
   navbars: [
     { name: "Top Navigation", folder: "example-top", author: "Example" },

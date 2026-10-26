@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Account</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <button class="open-modal-btn" id="openModal">Manage Account</button>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div
+        class="modal"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        aria-modal="true"
+      >
+        <div class="modal__header">
+          <h2 class="modal__title" id="modalTitle">Manage Account</h2>
+          <p class="modal__subtitle">
+            Update your settings or delete your account.
+          </p>
+        </div>
+
+        <div class="tabs__nav">
+          <button class="tabs__button active" data-tab="settings">
+            Settings
+          </button>
+          <button class="tabs__button" data-tab="delete">Delete Account</button>
+        </div>
+
+        <div class="tabs__panels">
+          <div class="tabs__panel active" id="tab-settings">
+            <div class="settings-row">
+              <span class="settings-row__label">
+                Account settings
+                <small>Update your profile, email, and password.</small>
+              </span>
+              <button class="settings-link-btn" id="goToSettingsBtn">
+                Go to settings
+              </button>
+            </div>
+            <div class="settings-row">
+              <span class="settings-row__label">
+                Notifications
+                <small>Manage what emails you receive.</small>
+              </span>
+              <button class="settings-link-btn" id="goToNotificationsBtn">
+                Manage
+              </button>
+            </div>
+          </div>
+
+          <div class="tabs__panel" id="tab-delete">
+            <p class="modal__message">
+              This action cannot be undone. Your account and all associated data
+              will be permanently deleted.
+            </p>
+            <div class="modal__actions">
+              <button class="modal__btn modal__btn--cancel" id="cancelBtn">
+                Cancel
+              </button>
+              <button class="modal__btn modal__btn--confirm" id="confirmBtn">
+                Yes, delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
